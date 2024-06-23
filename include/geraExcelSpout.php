@@ -20,7 +20,7 @@ if ($linhas == 0 || $colunas == 0) {
     die("Preencha todos os dados corretamente");
 }
 
-$nomeArquivo = date("dmYHis") . ".xlsx";
+$nomeArquivo = date("dmYHis") . "_spout.xlsx";
 $escrever = new \OpenSpout\Writer\XLSX\Writer();
 $escrever->openToBrowser($nomeArquivo);
 

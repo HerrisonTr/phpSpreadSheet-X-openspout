@@ -23,7 +23,7 @@ if ($linhas == 0 || $colunas == 0) {
     die("Preencha todos os dados corretamente");
 }
 
-$nomeArquivo = date("dmYHis") . ".xlsx";
+$nomeArquivo = date("dmYHis") . "_spreadsheet.xlsx";
 
 for ($linha = 1; $linha <= $linhas; $linha++) {
     $letraColuna = 'A';
@@ -33,6 +33,13 @@ for ($linha = 1; $linha <= $linhas; $linha++) {
         $letraColuna++;
     };
 }
+
+$escrever = new Xlsx($spreadsheet);
+
+header("Content-Type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename={$nomeArquivo}");
+ob_end_clean();
+$escrever->save('php://output');
 
 $fim = microtime(true);
 $tempoDeExecucao = $fim - $inicio;
@@ -44,10 +51,3 @@ $_SESSION['phpspreadsheet'][] = [
     'colunas' => $colunas,
     'tempoExecucao' => $tempoDeExecucaoFormatado,
 ];
-
-$escrever = new Xlsx($spreadsheet);
-
-header("Content-Type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename={$nomeArquivo}");
-ob_end_clean();
-$escrever->save('php://output');
