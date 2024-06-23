@@ -29,7 +29,7 @@ Siga estas instruções para obter uma cópia do projeto em execução na sua m�
 2. Navegue até o diretório do projeto:
 
     ```bash
-    cd seu-repositorio
+    cd phpSpreadSheet-X-openspout
     ```
 
 3. Instale as dependências do Composer:
